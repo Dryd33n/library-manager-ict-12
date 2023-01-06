@@ -1,0 +1,34 @@
+.main-menu-button {
+    background-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.main-menu-button-selected {
+    -fx-underline: true;
+    -fx-bold: true;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.main-menu-separator {
+    -fx-opacity: 0.6;
+    opacity: 0.6;
+}
+
+.credit-text{
+    -fx-opacity: 0.6;
+    opacity: 0.6;
+
+}
+
+.text-field {
+    -fx-background-color: #ffffff3a;
+    background-color: #ffffff3a;
+    -fx-text-fill:#ffffffb6;
+
+}
+
+.search-menu-radio-button{
+    -fx-opacity: 0.8;
+    opacity: 0.8;
+}

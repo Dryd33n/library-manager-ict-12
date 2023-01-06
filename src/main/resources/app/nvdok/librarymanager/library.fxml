@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@background.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <HBox prefHeight="59.0" prefWidth="800.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" prefHeight="56.0" prefWidth="506.0" text="NORTH VANCOUVER DISTRICT" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="TOP_LEFT" prefHeight="62.0" prefWidth="402.0" text="Public Library">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="36.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.2222222238779068" green="0.7018518447875977" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.6222222447395325" green="0.37037035822868347" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+               </children></HBox>
+            <HBox prefHeight="538.0" prefWidth="800.0">
+               <children>
+                  <VBox prefHeight="538.0" prefWidth="168.0">
+                     <children>
+                        <Label alignment="BOTTOM_CENTER" prefHeight="166.0" prefWidth="176.0" text="- MENU -" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" text="BOOKS" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="main-menu-button" />
+                              <String fx:value="main-menu-button-selected" />
+                           </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="MOVIES" textFill="WHITE" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="AUDIO BOOKS" textFill="WHITE" />
+                        <Separator prefHeight="18.0" prefWidth="148.0" styleClass="main-menu-separator">
+                           <VBox.margin>
+                              <Insets bottom="3.0" left="20.0" right="20.0" top="3.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="242.0" prefWidth="168.0" styleClass="main-menu-button" text="QUIT" textFill="WHITE" />
+                        <Label prefHeight="44.0" prefWidth="168.0" styleClass="credit-text" text="NVDPL Application by Dryden Bryson      2023" textFill="WHITE" wrapText="true">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children></VBox>
+                  <HBox prefHeight="538.0" prefWidth="632.0">
+                     <children>
+                        <AnchorPane prefHeight="538.0" prefWidth="291.0">
+                           <children>
+                              <VBox prefHeight="558.0" prefWidth="310.0" visible="false">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="21.0" prefWidth="135.0" text="BOOK SEARCH:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="24.0" prefWidth="90.0" text="Book Title:" textFill="#ffffffb2">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Unread" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="101.0" styleClass="search-menu-radio-button" text="Read " textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Not Borrowing" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="102.0" styleClass="search-menu-radio-button" text="Borrowing" textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <Label text="Book Results:" textFill="#ffffffcc">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <ScrollPane prefHeight="379.0" prefWidth="296.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="281.0">
+                                             <children>
+                                                <ListView prefHeight="386.0" prefWidth="304.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="558.0" prefWidth="310.0" visible="false">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="21.0" prefWidth="135.0" text="MOVIE SEARCH:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="24.0" prefWidth="90.0" text="Movie Title:" textFill="#ffffffb2">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Unwatched" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="101.0" styleClass="search-menu-radio-button" text="Watched" textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Not Borrowing" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="102.0" styleClass="search-menu-radio-button" text="Borrowing" textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <Label text="Movie Results:" textFill="#ffffffcc">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <ScrollPane prefHeight="379.0" prefWidth="296.0">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="281.0">
+                                             <children>
+                                                <ListView prefHeight="386.0" prefWidth="304.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="558.0" prefWidth="310.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="183.0" text="AUDIOBOOK SEARCH:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="19.0" prefWidth="125.0" text="Audiobook Title:" textFill="#ffffffb2">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Unlistened" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="101.0" styleClass="search-menu-radio-button" text="Listened" textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="34.0" prefWidth="316.0" styleClass="search-menu-radio-button">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="146.0" styleClass="search-menu-radio-button" text="Not Borrowing" textFill="WHITE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="102.0" styleClass="search-menu-radio-button" text="Borrowing" textFill="WHITE" />
+                                          <RadioButton mnemonicParsing="false" styleClass="search-menu-radio-button" text="All" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="17.0" prefWidth="110.0" text="Audiobook Results:" textFill="#ffffffcc">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <ScrollPane prefHeight="379.0" prefWidth="296.0">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="281.0">
+                                             <children>
+                                                <ListView prefHeight="386.0" prefWidth="304.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="538.0" prefWidth="291.0">
+                           <children>
+                              <VBox prefHeight="538.0" prefWidth="328.0" visible="false">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="BOOK INFO:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <VBox prefHeight="32.0" prefWidth="322.0">
+                                       <children>
+                                          <Label prefHeight="93.0" prefWidth="150.0" text="Things Fall Apart" textFill="#ffffffcc" underline="true">
+                                             <font>
+                                                <Font name="System Italic" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Chinua Achebe" textFill="#ffffffcc" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <Label text="Released in 1958 in Nigeria, Things Fall Apart is a 209 page English book written by author Chinua Achebe" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="0.0" prefWidth="123.0" text="Author: Chinua Achebe" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1958" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Country: Nigeria" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Book Language: English" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Pages: 209" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Button mnemonicParsing="false" text="Jump To Book Website">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <HBox prefHeight="55.0" prefWidth="328.0">
+                                       <children>
+                                          <VBox prefHeight="66.0" prefWidth="169.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Read">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Borrow">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="100.0" prefWidth="170.0">
+                                             <children>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Unread">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Return">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="538.0" prefWidth="328.0" visible="false">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="MOVIE INFO:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <VBox prefHeight="32.0" prefWidth="322.0">
+                                       <children>
+                                          <Label prefHeight="93.0" prefWidth="150.0" text="Beetlejuice" textFill="#ffffffcc" underline="true">
+                                             <font>
+                                                <Font name="System Italic" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="316.0" text="Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page" textFill="#ffffffcc" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <Label text="A couple of recently deceased ghosts contract the services of a \&quot;bio-exorcist\&quot; in order to remove the obnoxious new owners of their house." textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="0.0" prefWidth="123.0" text="Director: Tim Burton" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1988" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Runtime: 92 min" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Genres: Comedy &amp; Fantasy" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <HBox prefHeight="55.0" prefWidth="328.0">
+                                       <children>
+                                          <VBox prefHeight="66.0" prefWidth="169.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Watched">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Borrow">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="100.0" prefWidth="170.0">
+                                             <children>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Unwatched">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Return">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="538.0" prefWidth="328.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="24.0" prefWidth="162.0" text="AUDIOBOOK INFO:" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <VBox prefHeight="32.0" prefWidth="322.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="312.0" text="The recognition of Shakuntala" textFill="#ffffffcc" underline="true">
+                                             <font>
+                                                <Font name="System Italic" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Klidsa" textFill="#ffffffcc" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <Label text="Released in 150 in India, The recognition of Shakuntala is a 147 page Sanskrit book written by author Klidsa" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="0.0" prefWidth="123.0" text="Author: Klidsa" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1958" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Country: Nigeria" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Book Language: Sanskrit" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="Pages: 147" textFill="#ffffffcc" wrapText="true">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Button mnemonicParsing="false" text="Jump To Audiobook Website">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <HBox prefHeight="55.0" prefWidth="328.0">
+                                       <children>
+                                          <VBox prefHeight="66.0" prefWidth="169.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Heard">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Borrow">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="100.0" prefWidth="170.0">
+                                             <children>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Mark Unheard">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Return">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
