@@ -19,7 +19,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.nvdpl.librarymanager.LibraryManagerController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0">
          <image>
@@ -74,14 +74,14 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" text="BOOKS" textFill="WHITE">
+                        <Button fx:id="mainMenuBookButton" mnemonicParsing="false" onAction="#changeToBookScreen" prefHeight="25.0" prefWidth="171.0" text="BOOKS" textFill="WHITE">
                            <styleClass>
                               <String fx:value="main-menu-button" />
                               <String fx:value="main-menu-button-selected" />
                            </styleClass>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="MOVIES" textFill="WHITE" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="AUDIO BOOKS" textFill="WHITE" />
+                        <Button fx:id="mainMenuMovieButton" mnemonicParsing="false" onAction="#changeToMovieScreen" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="MOVIES" textFill="WHITE" />
+                        <Button fx:id="mainMenuAudioBookButton" mnemonicParsing="false" onAction="#changeToAudiobookScreen" prefHeight="25.0" prefWidth="171.0" styleClass="main-menu-button" text="AUDIO BOOKS" textFill="WHITE" />
                         <Separator prefHeight="18.0" prefWidth="148.0" styleClass="main-menu-separator">
                            <VBox.margin>
                               <Insets bottom="3.0" left="20.0" right="20.0" top="3.0" />
@@ -98,7 +98,7 @@
                      <children>
                         <AnchorPane prefHeight="538.0" prefWidth="291.0">
                            <children>
-                              <VBox prefHeight="558.0" prefWidth="310.0" visible="false">
+                              <VBox fx:id="bookSearchVbox" prefHeight="558.0" prefWidth="310.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="21.0" prefWidth="135.0" text="BOOK SEARCH:" textFill="WHITE" underline="true">
                                        <font>
@@ -165,7 +165,7 @@
                                     </ScrollPane>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="558.0" prefWidth="310.0" visible="false">
+                              <VBox fx:id="movieSearchVbox" prefHeight="558.0" prefWidth="310.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="21.0" prefWidth="135.0" text="MOVIE SEARCH:" textFill="WHITE" underline="true">
                                        <font>
@@ -232,7 +232,7 @@
                                     </ScrollPane>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="558.0" prefWidth="310.0">
+                              <VBox fx:id="audiobookSearchVbox" prefHeight="558.0" prefWidth="310.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="20.0" prefWidth="183.0" text="AUDIOBOOK SEARCH:" textFill="WHITE" underline="true">
                                        <font>
@@ -303,7 +303,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="538.0" prefWidth="291.0">
                            <children>
-                              <VBox prefHeight="538.0" prefWidth="328.0" visible="false">
+                              <VBox fx:id="bookInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="BOOK INFO:" textFill="WHITE" underline="true">
                                        <font>
@@ -413,7 +413,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="538.0" prefWidth="328.0" visible="false">
+                              <VBox fx:id="movieInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="MOVIE INFO:" textFill="WHITE" underline="true">
                                        <font>
@@ -513,7 +513,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="538.0" prefWidth="328.0">
+                              <VBox fx:id="audiobookInfoVbox" prefHeight="538.0" prefWidth="328.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="162.0" text="AUDIOBOOK INFO:" textFill="WHITE" underline="true">
                                        <font>

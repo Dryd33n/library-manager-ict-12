@@ -3,6 +3,6 @@ module app.nvdok.librarymanager {
     requires javafx.fxml;
 
 
-    opens app.nvdok.librarymanager to javafx.fxml;
-    exports app.nvdok.librarymanager;
+    opens app.nvdpl.librarymanager to javafx.fxml;
+    exports app.nvdpl.librarymanager;
 }
