@@ -2,10 +2,10 @@ package app.nvdpl.librarymanager;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 public class Book{
 
@@ -34,10 +34,8 @@ public class Book{
         year = bookObject.getInt("year");
 
         try {
-            uri = new URI(URLDecoder.decode(bookObject.getString("link"), "UTF-8"));
+            uri = new URI(URLDecoder.decode(bookObject.getString("link"), StandardCharsets.UTF_8));
         } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }
@@ -57,8 +55,21 @@ public class Book{
     }
 
     public Boolean checkSearchTerm(String searchQuery){
-        if(title.toLowerCase().contains(searchQuery.toLowerCase())) return true;
-        else return false;
+        return title.toLowerCase().contains(searchQuery.toLowerCase());
+    }
+
+    public String[] getBookInfo(){
+        String[] bookInfo = {
+                title,
+                "by " + author,
+                "Released in " + year + " in " + country + ", " + title + " is a " + pages + " page " + language + " book written by author " + author,
+                    "Author: " + author +"\n"+
+                    "Year: " + year + "\n"+
+                    "Country: " + country + "\n" +
+                    "Book Language:  "+language+"\n"+
+                    "Pages: "+ pages,
+                uri.toString()};
+
     }
 
     @Override

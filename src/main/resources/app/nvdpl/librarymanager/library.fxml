@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -300,7 +301,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="538.0" prefWidth="291.0">
                            <children>
-                              <VBox fx:id="bookInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
+                              <VBox fx:id="bookInfoVbox" prefHeight="538.0" prefWidth="328.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="BOOK INFO:" textFill="WHITE" underline="true">
                                        <font>
@@ -312,18 +313,18 @@
                                     </Label>
                                     <VBox prefHeight="32.0" prefWidth="322.0">
                                        <children>
-                                          <Label prefHeight="93.0" prefWidth="150.0" text="Things Fall Apart" textFill="#ffffffcc" underline="true">
+                                          <Label fx:id="bookTitle" prefHeight="93.0" prefWidth="150.0" text="Things Fall Apart" textFill="#ffffffcc" underline="true">
                                              <font>
                                                 <Font name="System Italic" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Chinua Achebe" textFill="#ffffffcc" />
+                                          <Label fx:id="bookAuthor" alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Chinua Achebe" textFill="#ffffffcc" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding>
                                     </VBox>
-                                    <Label text="Released in 1958 in Nigeria, Things Fall Apart is a 209 page English book written by author Chinua Achebe" textFill="#ffffffcc" wrapText="true">
+                                    <Label fx:id="bookDescription" text="Released in 1958 in Nigeria, Things Fall Apart is a 209 page English book written by author Chinua Achebe" textFill="#ffffffcc" wrapText="true">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -331,47 +332,12 @@
                                           <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label prefHeight="0.0" prefWidth="123.0" text="Author: Chinua Achebe" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
+                                    <TextArea fx:id="bookInfoTextArea" prefHeight="116.0" prefWidth="308.0" text="Author: Chinua Achebe &#10;Year: 1958&#10;Country: Nigeria&#10;Book Language: English&#10;Pages: 209">
                                        <VBox.margin>
-                                          <Insets left="10.0" />
+                                          <Insets left="5.0" right="10.0" />
                                        </VBox.margin>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1958" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Country: Nigeria" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Book Language: English" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Pages: 209" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Button mnemonicParsing="false" text="Jump To Book Website">
+                                    </TextArea>
+                                    <Button fx:id="bookWebsiteButton" mnemonicParsing="false" text="Jump To Book Website">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="20.0" top="10.0" />
                                        </VBox.margin>
@@ -510,7 +476,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox fx:id="audiobookInfoVbox" prefHeight="538.0" prefWidth="328.0">
+                              <VBox fx:id="audiobookInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="162.0" text="AUDIOBOOK INFO:" textFill="WHITE" underline="true">
                                        <font>

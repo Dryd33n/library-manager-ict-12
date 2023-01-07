@@ -51,8 +51,6 @@ public class Util {
                 "Borrowing", true,
                 "Not Borrowing",false);
 
-        buttonString = buttonString.trim();
-
         System.out.println(stringToBoolMap.get(buttonString) + buttonString);
         return stringToBoolMap.get(buttonString);
     }

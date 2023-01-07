@@ -11,6 +11,10 @@ public class LibraryInventory {
     private ArrayList<Movie> movieInventory;
     private ArrayList<AudioBook> audiobookInventory;
 
+    private ArrayList<Book> bookInventoryFilteredArray;
+    private ArrayList<Movie> movieInventoryFilteredArray;
+    private ArrayList<AudioBook> audiobookInventoryFilteredArray;
+
 
     public LibraryInventory(){
         String bookPath = "src/main/resources/app/nvdpl/librarymanager/books.json";
@@ -53,6 +57,7 @@ public class LibraryInventory {
     }
 
     public ObservableList<String> getBookObservableList(){
+        bookInventoryFilteredArray = bookInventory;
         return Util.arrayListToStringifiedObservableList(bookInventory);
     }
 
@@ -63,7 +68,7 @@ public class LibraryInventory {
 
         if(!searchTerm.isEmpty()){
             for (Book book : bookInventory) {
-                if(book.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(book);
+                if(book.checkSearchTerm(searchTerm))  resultList.add(book);
             }
         }else{
             resultList = bookInventory;
@@ -94,10 +99,12 @@ public class LibraryInventory {
             resultList = resultList2;
         }
 
+        bookInventoryFilteredArray = resultList;
         return Util.arrayListToStringifiedObservableList(resultList);
     }
 
     public ObservableList<String> getMovieObservableList(){
+        movieInventoryFilteredArray = movieInventory;
         return Util.arrayListToStringifiedObservableList(movieInventory);
     }
 
@@ -108,7 +115,7 @@ public class LibraryInventory {
 
         if(!searchTerm.isEmpty()){
             for (Movie movie : movieInventory) {
-                if(movie.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(movie);
+                if(movie.checkSearchTerm(searchTerm))  resultList.add(movie);
             }
         }else{
             resultList = movieInventory;
@@ -139,11 +146,13 @@ public class LibraryInventory {
             resultList = resultList2;
         }
 
+        movieInventoryFilteredArray = resultList;
         return Util.arrayListToStringifiedObservableList(resultList);
     }
 
 
     public ObservableList<String> getAudioBookObservableList(){
+        audiobookInventoryFilteredArray = audiobookInventory;
         return Util.arrayListToStringifiedObservableList(audiobookInventory);
     }
 
@@ -154,7 +163,7 @@ public class LibraryInventory {
 
         if(!searchTerm.isEmpty()){
             for (AudioBook audioBook : audiobookInventory) {
-                if(audioBook.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(audioBook);
+                if(audioBook.checkSearchTerm(searchTerm))  resultList.add(audioBook);
             }
         }else{
             resultList = audiobookInventory;
@@ -185,7 +194,20 @@ public class LibraryInventory {
             resultList = resultList2;
         }
 
+        audiobookInventoryFilteredArray = resultList;
         return Util.arrayListToStringifiedObservableList(resultList);
+    }
+
+    public Book getSearchResultBookFromIndex(int index){
+        return bookInventoryFilteredArray.get(index);
+    }
+
+    public Movie getSearchResultMovieFromIndex(int index){
+        return movieInventoryFilteredArray.get(index);
+    }
+
+    public AudioBook getSearchResultAudioBookFromIndex(int index){
+        return audiobookInventoryFilteredArray.get(index);
     }
 
 

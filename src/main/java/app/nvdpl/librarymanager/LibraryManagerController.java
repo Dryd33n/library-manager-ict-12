@@ -29,6 +29,11 @@ public class LibraryManagerController {
     public TextField audioBookSearchFIeld;
 
     public TextField bookSearchInputField;
+    public Label bookTitle;
+    public Label bookAuthor;
+    public Label bookDescription;
+    public Button bookWebsiteButton;
+    public TextArea bookInfoTextArea;
 
     @FXML
     public void initialize() {
@@ -101,6 +106,13 @@ public class LibraryManagerController {
 
         audiobookSearchResultListView.getItems().setAll(Main.libraryInventory.getAudioBookObservableList(input, searchReadOnly, searchBorrowedOnly));
     }
+
+    public void updateBookInfoPanel(){
+        Book book = Main.libraryInventory.getSearchResultBookFromIndex(bookSearchResultListView.getSelectionModel().getSelectedIndex());
+
+
+    }
+
 
 
 
