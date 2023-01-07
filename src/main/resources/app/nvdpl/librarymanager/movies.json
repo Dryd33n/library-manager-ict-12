@@ -1,6 +1,4 @@
- //CREDIT https://github.com/erik-sytnyk/movies-list/blob/master/db.json
- 
- [
+[
         {
             "id": 1,
             "title": "Beetlejuice",

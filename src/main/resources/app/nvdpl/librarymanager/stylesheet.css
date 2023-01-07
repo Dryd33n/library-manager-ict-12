@@ -31,11 +31,14 @@
 
 }
 
-.text-field {
-    -fx-background-color: #ffffff3a;
-    background-color: #ffffff3a;
-    -fx-text-fill:#ffffffb6;
 
+
+.text-field {
+    -fx-background-color: #727272cc;
+    background-color: #3a3939cc;
+    -fx-text-fill: #ffffff;
+    -fx-highlight-text-fill: #ffffff;
+    -fx-prompt-text-fill: #ffffff;
 }
 
 .search-menu-radio-button{

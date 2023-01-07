@@ -13,7 +13,7 @@ public class LibraryManagerApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(LibraryManagerApplication.class.getResource("library.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setResizable(false);
-        stage.setTitle("Hello!");
+        stage.setTitle("North Vancouver District Public Library Inventory Manager");
         stage.setScene(scene);
         stage.show();
     }
