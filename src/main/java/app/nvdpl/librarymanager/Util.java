@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Util {
@@ -38,6 +39,25 @@ public class Util {
 
         return result;
     }
+
+    public static Boolean boolifyRadioButtonString(String buttonString){
+        Map<String, Boolean> stringToBoolMap = Map.of(
+                "Read",true,
+                "Unread",false,
+                "Watched", true,
+                "Unwatched", false,
+                "Listened", true,
+                "Unlistened",false,
+                "Borrowing", true,
+                "Not Borrowing",false);
+
+        buttonString = buttonString.trim();
+
+        System.out.println(stringToBoolMap.get(buttonString) + buttonString);
+        return stringToBoolMap.get(buttonString);
+    }
+
+
 
     public static ObservableList<String> arrayListToStringifiedObservableList(ArrayList<?> objectArrayList){
         ObservableList<String> result = FXCollections.observableArrayList();

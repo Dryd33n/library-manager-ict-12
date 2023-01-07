@@ -9,7 +9,8 @@ import java.net.URLDecoder;
 
 public class Book{
 
-    protected final String author, country, language, title;
+    public final String title;
+    protected final String author, country, language;
     protected final int pages, year;
     protected final URI uri;
 

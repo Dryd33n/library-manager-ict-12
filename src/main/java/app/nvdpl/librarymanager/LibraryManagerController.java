@@ -1,10 +1,7 @@
 package app.nvdpl.librarymanager;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 public class LibraryManagerController {
@@ -22,14 +19,16 @@ public class LibraryManagerController {
     public ListView<String> bookSearchResultListView;
     public ListView<String> audiobookSearchResultListView;
     public ListView<String> movieSearchResultListView;
-    public TextField bookSearchInputField;
     public ToggleGroup BookSearchReadGroup;
     public ToggleGroup BookSearchBorrowedGroup;
     public ToggleGroup MovieSearchWatchedGroup;
     public ToggleGroup MovieSearchBorrowedGrouop;
     public ToggleGroup AudiobookListenedGroup;
     public ToggleGroup AudiobookBorrowedGroup;
+    public TextField movieSearchField;
+    public TextField audioBookSearchFIeld;
 
+    public TextField bookSearchInputField;
 
     @FXML
     public void initialize() {
@@ -80,12 +79,29 @@ public class LibraryManagerController {
     }
 
     public void refreshBookSearchBarQuery(){
-        if(bookSearchInputField.getText().isEmpty()){
-            bookSearchResultListView.getItems().setAll(Main.libraryInventory.getBookObservableList());
-        }else{
-            bookSearchResultListView.getItems().setAll(Main.libraryInventory.getBookObservableList(bookSearchInputField.getText()));
-        }
+        String input = bookSearchInputField.getText();
+        Boolean searchReadOnly = Util.boolifyRadioButtonString(((RadioButton) BookSearchReadGroup.getSelectedToggle()).getText());
+        Boolean searchBorrowedOnly = Util.boolifyRadioButtonString(((RadioButton) BookSearchBorrowedGroup.getSelectedToggle()).getText());
+
+        bookSearchResultListView.getItems().setAll(Main.libraryInventory.getBookObservableList(input, searchReadOnly, searchBorrowedOnly));
     }
+
+    public void refreshMovieSearchBarQuery(){
+        String input = movieSearchField.getText();
+        Boolean searchReadOnly = Util.boolifyRadioButtonString(((RadioButton) MovieSearchWatchedGroup.getSelectedToggle()).getText());
+        Boolean searchBorrowedOnly = Util.boolifyRadioButtonString(((RadioButton) MovieSearchBorrowedGrouop.getSelectedToggle()).getText());
+
+        movieSearchResultListView.getItems().setAll(Main.libraryInventory.getMovieObservableList(input, searchReadOnly, searchBorrowedOnly));
+    }
+
+    public void refreshAudioSearchBarQuery(){
+        String input = audioBookSearchFIeld.getText();
+        Boolean searchReadOnly = Util.boolifyRadioButtonString(((RadioButton) AudiobookListenedGroup.getSelectedToggle()).getText());
+        Boolean searchBorrowedOnly = Util.boolifyRadioButtonString(((RadioButton) AudiobookBorrowedGroup.getSelectedToggle()).getText());
+
+        audiobookSearchResultListView.getItems().setAll(Main.libraryInventory.getAudioBookObservableList(input, searchReadOnly, searchBorrowedOnly));
+    }
+
 
 
 }

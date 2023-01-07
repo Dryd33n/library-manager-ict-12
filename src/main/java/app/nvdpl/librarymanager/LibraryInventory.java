@@ -56,13 +56,42 @@ public class LibraryInventory {
         return Util.arrayListToStringifiedObservableList(bookInventory);
     }
 
-    public ObservableList<String> getBookObservableList(String searchTerm){
+    public ObservableList<String> getBookObservableList(String searchTerm, Boolean seenToggle, Boolean borrowedToggle){
         ArrayList<Book> resultList = new ArrayList<>();
+        ArrayList<Book> resultList2 = new ArrayList<>();
 
-        for (int i = 0; i < bookInventory.size(); i++) {
-            if(bookInventory.get(i).checkSearchTerm(searchTerm)){
-                resultList.add(bookInventory.get(i));
+
+        if(!searchTerm.isEmpty()){
+            for (Book book : bookInventory) {
+                if(book.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(book);
             }
+        }else{
+            resultList = bookInventory;
+        }
+
+        if(seenToggle != null) {
+            for (Book book: resultList) {
+                if(Main.myInventory.ReadBookMap.containsKey(book.title)) {
+                    if(seenToggle) resultList2.add(book);
+                }else{
+                    if(!seenToggle) resultList2.add(book);
+                }
+            }
+
+            resultList = resultList2;
+            resultList2 = new ArrayList<>();
+        }
+
+        if(borrowedToggle != null) {
+            for (Book book: resultList) {
+                if(Main.myInventory.BorrowedBookMap.containsKey(book.title)) {
+                    if(borrowedToggle) resultList2.add(book);
+                }else{
+                    if(!borrowedToggle) resultList2.add(book);
+                }
+            }
+
+            resultList = resultList2;
         }
 
         return Util.arrayListToStringifiedObservableList(resultList);
@@ -72,33 +101,95 @@ public class LibraryInventory {
         return Util.arrayListToStringifiedObservableList(movieInventory);
     }
 
-    public ObservableList<String> getMovieObservableList(String searchTerm){
+    public ObservableList<String> getMovieObservableList(String searchTerm, Boolean seenToggle, Boolean borrowedToggle){
         ArrayList<Movie> resultList = new ArrayList<>();
+        ArrayList<Movie> resultList2 = new ArrayList<>();
 
-        for (int i = 0; i < movieInventory.size(); i++) {
-            if(movieInventory.get(i).checkSearchTerm(searchTerm)){
-                resultList.add(movieInventory.get(i));
+
+        if(!searchTerm.isEmpty()){
+            for (Movie movie : movieInventory) {
+                if(movie.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(movie);
             }
+        }else{
+            resultList = movieInventory;
+        }
+
+        if(seenToggle != null) {
+            for (Movie movie: resultList) {
+                if(Main.myInventory.ReadMovieMap.containsKey(movie.title)) {
+                    if(seenToggle) resultList2.add(movie);
+                }else{
+                    if(!seenToggle) resultList2.add(movie);
+                }
+            }
+
+            resultList = resultList2;
+            resultList2 = new ArrayList<>();
+        }
+
+        if(borrowedToggle != null) {
+            for (Movie movie: resultList) {
+                if(Main.myInventory.BorrowedMovieMap.containsKey(movie.title)) {
+                    if(borrowedToggle) resultList2.add(movie);
+                }else{
+                    if(!borrowedToggle) resultList2.add(movie);
+                }
+            }
+
+            resultList = resultList2;
         }
 
         return Util.arrayListToStringifiedObservableList(resultList);
     }
+
 
     public ObservableList<String> getAudioBookObservableList(){
         return Util.arrayListToStringifiedObservableList(audiobookInventory);
     }
 
-    public ObservableList<String> getAudioBookObservableList(String searchTerm){
+    public ObservableList<String> getAudioBookObservableList(String searchTerm, Boolean seenToggle, Boolean borrowedToggle){
         ArrayList<AudioBook> resultList = new ArrayList<>();
+        ArrayList<AudioBook> resultList2 = new ArrayList<>();
 
-        for (int i = 0; i < audiobookInventory.size(); i++) {
-            if(audiobookInventory.get(i).checkSearchTerm(searchTerm)){
-                resultList.add(audiobookInventory.get(i));
+
+        if(!searchTerm.isEmpty()){
+            for (AudioBook audioBook : audiobookInventory) {
+                if(audioBook.title.toLowerCase().contains(searchTerm.toLowerCase()))  resultList.add(audioBook);
             }
+        }else{
+            resultList = audiobookInventory;
+        }
+
+        if(seenToggle != null) {
+            for (AudioBook audioBook: resultList) {
+                if(Main.myInventory.ReadAudioBookMap.containsKey(audioBook.title)) {
+                    if(seenToggle) resultList2.add(audioBook);
+                }else{
+                    if(!seenToggle) resultList2.add(audioBook);
+                }
+            }
+
+            resultList = resultList2;
+            resultList2 = new ArrayList<>();
+        }
+
+        if(borrowedToggle != null) {
+            for (AudioBook audioBook: resultList) {
+                if(Main.myInventory.BorrowedAudioBookMap.containsKey(audioBook.title)) {
+                    if(borrowedToggle) resultList2.add(audioBook);
+                }else{
+                    if(!borrowedToggle) resultList2.add(audioBook);
+                }
+            }
+
+            resultList = resultList2;
         }
 
         return Util.arrayListToStringifiedObservableList(resultList);
     }
+
+
+
 
 
 

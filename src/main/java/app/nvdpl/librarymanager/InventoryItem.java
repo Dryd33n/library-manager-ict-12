@@ -1,5 +1,6 @@
 package app.nvdpl.librarymanager;
 
-public class InventoryItem {
+import java.util.Map;
 
+public class InventoryItem {
 }

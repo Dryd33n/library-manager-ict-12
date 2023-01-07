@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class Movie{
 
-    private final String title, year, runtime, director, actors, plot;
+    public final String title;
+    private final String year, runtime, director, actors, plot;
     private final ArrayList<String> genres;
     private final URI uri;
 
