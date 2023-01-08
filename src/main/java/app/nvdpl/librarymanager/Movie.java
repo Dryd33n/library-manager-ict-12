@@ -56,6 +56,19 @@ public class Movie{
         this.uri = new URI(uri);
     }
 
+    public String[] getMovieInfo(){
+        String[] movieInfo = {
+                title,
+                actors,
+                plot,
+                    "Director: "+director+"\n"+
+                    "Year: "+year+"\n"+
+                    "Runtime: "+runtime+"\n"+
+                    "Genres: "+genres.toString().replace("[","").replace("]","")};
+
+        return movieInfo;
+    }
+
     public Boolean checkSearchTerm(String searchQuery){
         if(title.toLowerCase().contains(searchQuery.toLowerCase())) return true;
         else return false;

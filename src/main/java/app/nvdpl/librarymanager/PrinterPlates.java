@@ -1,5 +1,6 @@
 package app.nvdpl.librarymanager;
 
-public class InventoryItem {
+public class PrinterPlates {
+
 
 }

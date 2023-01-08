@@ -70,6 +70,7 @@ public class Book{
                     "Pages: "+ pages,
                 uri.toString()};
 
+        return bookInfo;
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -25,9 +26,24 @@ public class Util {
             throw new RuntimeException(e);
         }
 
-        System.out.println(contents);//remove
-
         return new JSONArray(contents);
+    }
+
+    public static String sha256(final String base) {
+        try{
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            final StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < hash.length; i++) {
+                final String hex = Integer.toHexString(0xff & hash[i]);
+                if(hex.length() == 1)
+                    hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
     }
 
     public static ArrayList<String> jsonArrayToArrayList(JSONArray jsonArray){
@@ -51,7 +67,6 @@ public class Util {
                 "Borrowing", true,
                 "Not Borrowing",false);
 
-        System.out.println(stringToBoolMap.get(buttonString) + buttonString);
         return stringToBoolMap.get(buttonString);
     }
 

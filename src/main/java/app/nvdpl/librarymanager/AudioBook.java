@@ -22,6 +22,20 @@ public class AudioBook extends Book {
         return title.toLowerCase().contains(searchQuery.toLowerCase());
     }
 
+    public String[] getAudiobookInfo(){
+
+        return new String[]{
+                title,
+                "by " + author,
+                "This book, " + title + "is written by author "+ author +"was released in "+year+". The transcription is in "+language+" and is "+length+" min long.",
+                "Author: " + author +"\n"+
+                        "Year: " + year + "\n"+
+                        "Country: " + country + "\n" +
+                        "Speaking Language:  "+language+"\n"+
+                        "Time: "+ length +" min",
+                uri.toString()};
+    }
+
 
 
     @Override

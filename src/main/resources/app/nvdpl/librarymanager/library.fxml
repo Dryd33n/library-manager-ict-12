@@ -158,7 +158,7 @@
                                           <Insets bottom="5.0" left="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ListView fx:id="bookSearchResultListView" prefHeight="386.0" prefWidth="304.0">
+                                    <ListView fx:id="bookSearchResultListView" onMouseClicked="#updateBookInfoPanel" prefHeight="386.0" prefWidth="304.0">
                                        <VBox.margin>
                                           <Insets bottom="25.0" left="15.0" right="15.0" />
                                        </VBox.margin>
@@ -224,7 +224,7 @@
                                           <Insets bottom="5.0" left="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ListView fx:id="movieSearchResultListView" prefHeight="386.0" prefWidth="304.0">
+                                    <ListView fx:id="movieSearchResultListView" onMouseClicked="#updateMovieInfoPanel" prefHeight="386.0" prefWidth="304.0">
                                        <VBox.margin>
                                           <Insets bottom="25.0" left="15.0" right="15.0" />
                                        </VBox.margin>
@@ -290,7 +290,7 @@
                                           <Insets bottom="5.0" left="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ListView fx:id="audiobookSearchResultListView" prefHeight="386.0" prefWidth="304.0">
+                                    <ListView fx:id="audiobookSearchResultListView" onMouseClicked="#updateAudioBookInfoPanel" prefHeight="386.0" prefWidth="304.0">
                                        <VBox.margin>
                                           <Insets bottom="25.0" left="15.0" right="15.0" />
                                        </VBox.margin>
@@ -301,7 +301,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="538.0" prefWidth="291.0">
                            <children>
-                              <VBox fx:id="bookInfoVbox" prefHeight="538.0" prefWidth="328.0">
+                              <VBox fx:id="bookInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="111.0" text="BOOK INFO:" textFill="WHITE" underline="true">
                                        <font>
@@ -337,7 +337,7 @@
                                           <Insets left="5.0" right="10.0" />
                                        </VBox.margin>
                                     </TextArea>
-                                    <Button fx:id="bookWebsiteButton" mnemonicParsing="false" text="Jump To Book Website">
+                                    <Button fx:id="bookWebsiteButton" mnemonicParsing="false" onAction="#bookWebsiteButton" text="Jump To Book Website">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="20.0" top="10.0" />
                                        </VBox.margin>
@@ -388,18 +388,18 @@
                                     </Label>
                                     <VBox prefHeight="32.0" prefWidth="322.0">
                                        <children>
-                                          <Label prefHeight="93.0" prefWidth="150.0" text="Beetlejuice" textFill="#ffffffcc" underline="true">
+                                          <Label fx:id="movieTitle" prefHeight="93.0" prefWidth="150.0" text="Beetlejuice" textFill="#ffffffcc" underline="true">
                                              <font>
                                                 <Font name="System Italic" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="316.0" text="Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page" textFill="#ffffffcc" />
+                                          <Label fx:id="movieActors" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="316.0" text="Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page" textFill="#ffffffcc" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding>
                                     </VBox>
-                                    <Label text="A couple of recently deceased ghosts contract the services of a \&quot;bio-exorcist\&quot; in order to remove the obnoxious new owners of their house." textFill="#ffffffcc" wrapText="true">
+                                    <Label fx:id="moviePlot" prefHeight="81.0" prefWidth="304.0" text="A couple of recently deceased ghosts contract the services of a \&quot;bio-exorcist\&quot; in order to remove the obnoxious new owners of their house." textFill="#ffffffcc" wrapText="true">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -407,38 +407,7 @@
                                           <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label prefHeight="0.0" prefWidth="123.0" text="Director: Tim Burton" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1988" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Runtime: 92 min" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Genres: Comedy &amp; Fantasy" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
+                                    <TextArea fx:id="movieInfoTextArea" prefHeight="77.0" prefWidth="329.0" text="Director: Tim Burton&#10;Year: 1988&#10;Runtime: 92 min&#10;Genres: Comedy, Fantasy" />
                                     <HBox prefHeight="55.0" prefWidth="328.0">
                                        <children>
                                           <VBox prefHeight="66.0" prefWidth="169.0">
@@ -474,9 +443,10 @@
                                           <Insets left="10.0" top="10.0" />
                                        </VBox.margin>
                                     </HBox>
+                                    <ImageView fitHeight="188.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </VBox>
-                              <VBox fx:id="audiobookInfoVbox" prefHeight="538.0" prefWidth="328.0" visible="false">
+                              <VBox fx:id="audiobookInfoVbox" prefHeight="538.0" prefWidth="328.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="24.0" prefWidth="162.0" text="AUDIOBOOK INFO:" textFill="WHITE" underline="true">
                                        <font>
@@ -488,18 +458,18 @@
                                     </Label>
                                     <VBox prefHeight="32.0" prefWidth="322.0">
                                        <children>
-                                          <Label prefHeight="25.0" prefWidth="312.0" text="The recognition of Shakuntala" textFill="#ffffffcc" underline="true">
+                                          <Label fx:id="audiobookTitle" prefHeight="25.0" prefWidth="312.0" text="The recognition of Shakuntala" textFill="#ffffffcc" underline="true">
                                              <font>
                                                 <Font name="System Italic" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Klidsa" textFill="#ffffffcc" />
+                                          <Label fx:id="audiobookAuthor" alignment="TOP_LEFT" prefHeight="23.0" prefWidth="144.0" text="by Klidsa" textFill="#ffffffcc" />
                                        </children>
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding>
                                     </VBox>
-                                    <Label text="Released in 150 in India, The recognition of Shakuntala is a 147 page Sanskrit book written by author Klidsa" textFill="#ffffffcc" wrapText="true">
+                                    <Label fx:id="audiobookDescription" text="Released in 150 in India, The recognition of Shakuntala is a 147 page Sanskrit book written by author Klidsa" textFill="#ffffffcc" wrapText="true">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -507,47 +477,8 @@
                                           <Insets bottom="10.0" left="20.0" right="5.0" top="10.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label prefHeight="0.0" prefWidth="123.0" text="Author: Klidsa" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Year: 1958" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Country: Nigeria" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Book Language: Sanskrit" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="174.0" text="Pages: 147" textFill="#ffffffcc" wrapText="true">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Button mnemonicParsing="false" text="Jump To Audiobook Website">
+                                    <TextArea fx:id="audioBookInfo" prefHeight="105.0" prefWidth="328.0" text="Author: Klidsa&#10;Year: 1958&#10;Country: Nigeria&#10;Book Language: Sanskrit&#10;Pages: 147" />
+                                    <Button mnemonicParsing="false" onAction="#audiobookWebsiteButton" text="Jump To Audiobook Website">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </VBox.margin>
