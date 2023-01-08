@@ -3,6 +3,7 @@ package app.nvdpl.librarymanager;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -11,6 +12,7 @@ public class LibraryManagerController extends Application {
     public Button mainMenuBookButton;
     public Button mainMenuMovieButton;
     public Button mainMenuAudioBookButton;
+    public VBox accountInfoVbox;
     public VBox bookSearchVbox;
     public VBox movieSearchVbox;
     public VBox audiobookSearchVbox;
@@ -44,6 +46,12 @@ public class LibraryManagerController extends Application {
     public Label audiobookAuthor;
     public Label audiobookDescription;
     public TextArea audioBookInfo;
+    public Button mainMenuAccountButton;
+    public Label accountUsername;
+    public TextArea accountInfo1;
+    public TextArea accountInfo2;
+    public HBox bookmovieaudiobookHbox;
+
 
     @FXML
     public void initialize() {
@@ -54,43 +62,54 @@ public class LibraryManagerController extends Application {
         changeToBookScreen();
     }
 
+    public void hideAllScreens(){
+        accountInfoVbox.setVisible(false);
+        mainMenuAccountButton.getStyleClass().removeAll("main-menu-button-selected");
+        movieSearchVbox.setVisible(false);
+        movieInfoVbox.setVisible(false);
+        mainMenuMovieButton.getStyleClass().removeAll("main-menu-button-selected");
+        audiobookSearchVbox.setVisible(false);
+        audiobookInfoVbox.setVisible(false);
+        mainMenuAudioBookButton.getStyleClass().removeAll("main-menu-button-selected");
+        bookSearchVbox.setVisible(false);
+        bookInfoVbox.setVisible(false);
+        mainMenuBookButton.getStyleClass().removeAll("main-menu-button-selected");
+        bookmovieaudiobookHbox.setVisible(false);
+    }
+
     public void changeToBookScreen(){
+        hideAllScreens();
+
         bookSearchVbox.setVisible(true);
         bookInfoVbox.setVisible(true);
         mainMenuBookButton.getStyleClass().add("main-menu-button-selected");
-
-        movieSearchVbox.setVisible(false);
-        movieInfoVbox.setVisible(false);
-        mainMenuMovieButton.getStyleClass().removeAll("main-menu-button-selected");
-        audiobookSearchVbox.setVisible(false);
-        audiobookInfoVbox.setVisible(false);
-        mainMenuAudioBookButton.getStyleClass().removeAll("main-menu-button-selected");
+        bookmovieaudiobookHbox.setVisible(true);
     }
 
     public void changeToMovieScreen(){
+        hideAllScreens();
+
         movieSearchVbox.setVisible(true);
         movieInfoVbox.setVisible(true);
         mainMenuMovieButton.getStyleClass().add("main-menu-button-selected");
-
-        bookSearchVbox.setVisible(false);
-        bookInfoVbox.setVisible(false);
-        mainMenuBookButton.getStyleClass().removeAll("main-menu-button-selected");
-        audiobookSearchVbox.setVisible(false);
-        audiobookInfoVbox.setVisible(false);
-        mainMenuAudioBookButton.getStyleClass().removeAll("main-menu-button-selected");
+        bookmovieaudiobookHbox.setVisible(true);
     }
 
     public void changeToAudiobookScreen(){
+        hideAllScreens();
+
         audiobookSearchVbox.setVisible(true);
         audiobookInfoVbox.setVisible(true);
         mainMenuAudioBookButton.getStyleClass().add("main-menu-button-selected");
+        bookmovieaudiobookHbox.setVisible(true);
+    }
 
-        bookSearchVbox.setVisible(false);
-        bookInfoVbox.setVisible(false);
-        mainMenuBookButton.getStyleClass().removeAll("main-menu-button-selected");
-        movieSearchVbox.setVisible(false);
-        movieInfoVbox.setVisible(false);
-        mainMenuMovieButton.getStyleClass().removeAll("main-menu-button-selected");
+    public void changeToAccountInfoScreen(){
+        hideAllScreens();
+        updateUserScreen();
+
+        accountInfoVbox.setVisible(true);
+        mainMenuAccountButton.getStyleClass().add("main-menu-button-selected");
     }
 
     public void refreshBookSearchBarQuery(){
@@ -118,7 +137,7 @@ public class LibraryManagerController extends Application {
     }
 
     public void updateBookInfoPanel(){
-        Integer index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
 
         if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
 
@@ -132,7 +151,7 @@ public class LibraryManagerController extends Application {
     }
 
     public void bookWebsiteButton(){
-        Integer index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
 
         if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
 
@@ -143,7 +162,7 @@ public class LibraryManagerController extends Application {
     }
 
     public void updateMovieInfoPanel(){
-        Integer index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
+        int index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
 
         if(index < 0 || index > movieSearchResultListView.getItems().size()) return;
 
@@ -157,7 +176,7 @@ public class LibraryManagerController extends Application {
     }
 
     public void updateAudioBookInfoPanel(){
-        Integer index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
 
         if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
 
@@ -171,21 +190,150 @@ public class LibraryManagerController extends Application {
     }
 
     public void audiobookWebsiteButton(){
-        Integer index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
+
+        Book book = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
+        String[] content = book.getBookInfo();
+
+        getHostServices().showDocument(content[4]);
+    }
+
+    public void borrowBook(){
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
 
         if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
 
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
-        String[] content = book.getBookInfo();
 
-        getHostServices().showDocument(content[4]);
+        Main.currentUser.borrowItem(book, true);
+    }
+
+    public void returnBook(){
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
+
+        Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
+
+        Main.currentUser.borrowItem(book, false);
+    }
+
+    public void borrowMovie(){
+        int index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > movieSearchResultListView.getItems().size()) return;
+
+        Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
+
+        Main.currentUser.borrowItem(movie, true);
+    }
+
+    public void returnMovie(){
+        int index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > movieSearchResultListView.getItems().size()) return;
+
+        Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
+
+        Main.currentUser.borrowItem(movie, false);
+    }
+
+    public void borrowAudioBook(){
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
+
+        AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
+
+        Main.currentUser.borrowItem(audioBook, true);
+    }
+
+    public void returnAudioBook(){
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
+
+        AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
+
+        Main.currentUser.borrowItem(audioBook, false);
+    }
+
+    public void readBook(){
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
+
+        Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
+
+        Main.currentUser.markItemAsRead(book, true);
+    }
+
+    public void unreadBook(){
+        int index = bookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > bookSearchResultListView.getItems().size()) return;
+
+        Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
+
+        Main.currentUser.markItemAsRead(book, false);
+    }
+
+
+    public void readMovie(){
+        int index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > movieSearchResultListView.getItems().size()) return;
+
+        Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
+
+        Main.currentUser.markItemAsRead(movie, true);
+    }
+
+    public void unreadMovie(){
+        int index = movieSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > movieSearchResultListView.getItems().size()) return;
+
+        Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
+
+        Main.currentUser.markItemAsRead(movie, false);
+    }
+
+    public void readAudioBook(){
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
+
+        AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
+
+        Main.currentUser.markItemAsRead(audioBook, true);
+    }
+
+    public void unreadAudioBook(){
+        int index = audiobookSearchResultListView.getSelectionModel().getSelectedIndex();
+
+        if(index < 0 || index > audiobookSearchResultListView.getItems().size()) return;
+
+        AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
+
+        Main.currentUser.markItemAsRead(audioBook, false);
+    }
+
+    public void updateUserScreen(){
+        String[] content = Main.currentUser.getUserData();
+
+        accountUsername.setText(content[0]);
+        accountInfo1.setText(content[1]);
+        accountInfo2.setText(content[2]);
     }
 
 
 
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
 
     }
 }

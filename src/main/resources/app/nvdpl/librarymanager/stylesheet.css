@@ -57,8 +57,10 @@
 
 
 .text-field {
-    -fx-background-color: #727272cc;
-    background-color: #3a3939cc;
+    -fx-border-width: 0 0 2 0 ;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #416dffcc;
+    -fx-background-color: #3a3939cc;
     -fx-text-fill: #ffffff;
     -fx-highlight-text-fill: #ffffff;
     -fx-prompt-text-fill: #ffffff;
@@ -67,4 +69,65 @@
 .search-menu-radio-button{
     -fx-opacity: 0.8;
     opacity: 0.8;
+}
+
+.mainButton:hover{
+    -fx-background-color: #5e5e5ecc;
+}
+
+.mainButton:disabled{
+    -fx-border-color: #4c5677cc;
+}
+
+.mainButton{
+    -fx-opacity: 0.8;
+    opacity: 0.8;
+    -fx-border-width: 0 0 2 0 ;
+    -fx-border-color: #416dffcc;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3a3939cc;
+}
+
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:even { /* <=== changed to even */
+    -fx-background-color: rgb(87, 87, 87);
+}
+
+.list-cell:filled:odd { /* <=== changed to even */
+    -fx-background-color: rgb(70, 70, 70);
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #0093ff;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:{
+    -fx-background-color: #3d3d3d;
+}
+
+.list-cell{
+    -fx-text-fill: white;
+}
+
+.list-view {
+    -fx-border-width: 0 0 2 0 ;
+    -fx-border-color: #416dffcc;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-scale-x: 0;
+    -fx-padding: -10; 
+    -fx-opacity: 0;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-scale-y: 0;
+    -fx-padding: -10; 
+    -fx-opacity: 0;
 }

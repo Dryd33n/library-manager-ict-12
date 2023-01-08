@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class LibraryInventory {
 
-    private ArrayList<Book> bookInventory;
-    private ArrayList<Movie> movieInventory;
-    private ArrayList<AudioBook> audiobookInventory;
+    private final ArrayList<Book> bookInventory;
+    private final ArrayList<Movie> movieInventory;
+    private final ArrayList<AudioBook> audiobookInventory;
 
     private ArrayList<Book> bookInventoryFilteredArray;
     private ArrayList<Movie> movieInventoryFilteredArray;
@@ -76,7 +76,7 @@ public class LibraryInventory {
 
         if(seenToggle != null) {
             for (Book book: resultList) {
-                if(Main.myInventory.ReadBookMap.containsKey(book.title)) {
+                if(Main.currentUser.ReadBookMap.containsKey(book.title)) {
                     if(seenToggle) resultList2.add(book);
                 }else{
                     if(!seenToggle) resultList2.add(book);
@@ -89,7 +89,7 @@ public class LibraryInventory {
 
         if(borrowedToggle != null) {
             for (Book book: resultList) {
-                if(Main.myInventory.BorrowedBookMap.containsKey(book.title)) {
+                if(Main.currentUser.BorrowedBookMap.containsKey(book.title)) {
                     if(borrowedToggle) resultList2.add(book);
                 }else{
                     if(!borrowedToggle) resultList2.add(book);
@@ -123,7 +123,7 @@ public class LibraryInventory {
 
         if(seenToggle != null) {
             for (Movie movie: resultList) {
-                if(Main.myInventory.ReadMovieMap.containsKey(movie.title)) {
+                if(Main.currentUser.ReadMovieMap.containsKey(movie.title)) {
                     if(seenToggle) resultList2.add(movie);
                 }else{
                     if(!seenToggle) resultList2.add(movie);
@@ -136,7 +136,7 @@ public class LibraryInventory {
 
         if(borrowedToggle != null) {
             for (Movie movie: resultList) {
-                if(Main.myInventory.BorrowedMovieMap.containsKey(movie.title)) {
+                if(Main.currentUser.BorrowedMovieMap.containsKey(movie.title)) {
                     if(borrowedToggle) resultList2.add(movie);
                 }else{
                     if(!borrowedToggle) resultList2.add(movie);
@@ -171,7 +171,7 @@ public class LibraryInventory {
 
         if(seenToggle != null) {
             for (AudioBook audioBook: resultList) {
-                if(Main.myInventory.ReadAudioBookMap.containsKey(audioBook.title)) {
+                if(Main.currentUser.ReadAudioBookMap.containsKey(audioBook.title)) {
                     if(seenToggle) resultList2.add(audioBook);
                 }else{
                     if(!seenToggle) resultList2.add(audioBook);
@@ -184,7 +184,7 @@ public class LibraryInventory {
 
         if(borrowedToggle != null) {
             for (AudioBook audioBook: resultList) {
-                if(Main.myInventory.BorrowedAudioBookMap.containsKey(audioBook.title)) {
+                if(Main.currentUser.BorrowedAudioBookMap.containsKey(audioBook.title)) {
                     if(borrowedToggle) resultList2.add(audioBook);
                 }else{
                     if(!borrowedToggle) resultList2.add(audioBook);
