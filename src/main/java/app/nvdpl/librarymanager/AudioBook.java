@@ -1,6 +1,15 @@
+/*
+Audio Book Class:
+
+This class is used for the base of the app, for the 3 main types of items in the
+inventory, this class provides functionality for audiobooks in the application
+ */
+
 package app.nvdpl.librarymanager;
 
 import org.json.JSONObject;
+
+
 
 public class AudioBook extends Book {
 
@@ -18,7 +27,7 @@ public class AudioBook extends Book {
         this.title = title;
     }
 
-    public Boolean checkSearchTerm(String searchQuery){
+    public Boolean checkSearchTerm(String searchQuery){//returns true if this book should be shown for a given search term
         return title.toLowerCase().contains(searchQuery.toLowerCase());
     }
 

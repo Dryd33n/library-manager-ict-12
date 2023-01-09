@@ -1,13 +1,20 @@
+/*
+BookUser Class:
+
+This class is used to hold information about each user in the application
+This class holds information about what books are being borrowed and which books
+have been read
+ */
+
 package app.nvdpl.librarymanager;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class BookUser{
     String username;
     protected HashMap<String, Book> ReadBookMap, BorrowedBookMap;
     protected HashMap<String, Movie> ReadMovieMap, BorrowedMovieMap;
-    protected Map<String, AudioBook> ReadAudioBookMap, BorrowedAudioBookMap;
+    protected HashMap<String, AudioBook> ReadAudioBookMap, BorrowedAudioBookMap;
 
     public BookUser(String username){
         ReadBookMap = new HashMap<>();
@@ -21,31 +28,28 @@ public class BookUser{
     }
 
     public boolean borrowItem(Book bookToRent, Boolean borrowing){
-        if(getNumOfBorrowedItems() >= 10) return false;
 
         if(borrowing) BorrowedBookMap.put(bookToRent.title, bookToRent);
-        else BorrowedBookMap.remove(bookToRent.title);
+        else BorrowedBookMap.remove(bookToRent.title, bookToRent);
         return true;
     }
 
     public boolean borrowItem(Movie movieToRent, Boolean borrowing){
-        if(getNumOfBorrowedItems() >= 10) return false;
 
         if(borrowing) BorrowedMovieMap.put(movieToRent.title, movieToRent);
-        else BorrowedBookMap.remove(movieToRent.title);
+        else BorrowedMovieMap.remove(movieToRent.title, movieToRent);
         return true;
     }
 
     public boolean borrowItem(AudioBook audiobookToRent, Boolean borrowing){
-        if(getNumOfBorrowedItems() >= 10) return false;
 
         if(borrowing) BorrowedAudioBookMap.put(audiobookToRent.title, audiobookToRent);
-        else BorrowedBookMap.remove(audiobookToRent.title);
+        else BorrowedAudioBookMap.remove(audiobookToRent.title, audiobookToRent);
         return true;
     }
 
     public boolean markItemAsRead(Book readBook, Boolean read){
-        if(!read || !ReadBookMap.containsKey(readBook.title)) return false;
+        if(!read && !ReadBookMap.containsKey(readBook.title)) return false;
 
         if(read) ReadBookMap.put(readBook.title, readBook);
         else ReadBookMap.remove(readBook.title);
@@ -54,7 +58,7 @@ public class BookUser{
     }
 
     public boolean markItemAsRead(Movie watchedMovie, Boolean read){
-        if(!read || !ReadMovieMap.containsKey(watchedMovie.title)) return false;
+        if(!read && !ReadMovieMap.containsKey(watchedMovie.title)) return false;
 
         if(read) ReadMovieMap.put(watchedMovie.title, watchedMovie);
         else ReadMovieMap.remove(watchedMovie.title);
@@ -63,7 +67,7 @@ public class BookUser{
     }
 
     public boolean markItemAsRead(AudioBook heardBook, Boolean read){
-        if(!read || !ReadAudioBookMap.containsKey(heardBook.title)) return false;
+        if(!read && !ReadAudioBookMap.containsKey(heardBook.title)) return false;
 
         if(read) ReadAudioBookMap.put(heardBook.title, heardBook);
         else ReadAudioBookMap.remove(heardBook.title);
@@ -71,6 +75,29 @@ public class BookUser{
         return true;
     }
 
+    public boolean isBorrowed(Book book){
+        return BorrowedBookMap.containsKey(book.title);
+    }
+
+    public boolean isBorrowed(Movie movie){
+        return BorrowedMovieMap.containsKey(movie.title);
+    }
+
+    public boolean isBorrowed(AudioBook audiobook){
+        return BorrowedAudioBookMap.containsKey(audiobook.title);
+    }
+
+    public boolean isRead(Book book){
+        return ReadBookMap.containsKey(book.title);
+    }
+
+    public boolean isRead(Movie movie){
+        return ReadMovieMap.containsKey(movie.title);
+    }
+
+    public boolean isRead(AudioBook audiobook){
+        return ReadAudioBookMap.containsKey(audiobook.title);
+    }
 
     public String[] getUserData(){
         return new String[]{

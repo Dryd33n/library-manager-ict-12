@@ -1,3 +1,12 @@
+/*
+Library Inventory Class:
+
+This class is instantiated once and once it is instantiated it proccess json files to
+create the library of content this class also provides functions to return observable
+lists so that the information can be displayed in the javafx window this class also
+has functions to search the database given specific search terms
+ */
+
 package app.nvdpl.librarymanager;
 
 import javafx.collections.ObservableList;
@@ -34,7 +43,7 @@ public class LibraryInventory {
         }
 
         return result;
-    }
+    }//takes the book json file and convert it to arraylist of books
 
     private ArrayList<Movie> processMovieJsonArray(JSONArray movieJsonArray){
         ArrayList<Movie> result = new ArrayList<>();
@@ -44,7 +53,7 @@ public class LibraryInventory {
         }
 
         return result;
-    }
+    }//takes the movie json file and converts it to an arraylist of movies
 
     private ArrayList<AudioBook> processAudioBookJsonArray(JSONArray audio){
         ArrayList<AudioBook> result = new ArrayList<>();
@@ -54,8 +63,10 @@ public class LibraryInventory {
         }
 
         return result;
-    }
+    }//takes the audiobook json file and convert it to an arraylist of movies
 
+
+    //OBSERVABLE LIST FUNCTIONS
     public ObservableList<String> getBookObservableList(){
         bookInventoryFilteredArray = bookInventory;
         return Util.arrayListToStringifiedObservableList(bookInventory);
@@ -66,7 +77,7 @@ public class LibraryInventory {
         ArrayList<Book> resultList2 = new ArrayList<>();
 
 
-        if(!searchTerm.isEmpty()){
+        if(!searchTerm.isEmpty()){//if the search term is empty move onto the next filter step with the full inventory
             for (Book book : bookInventory) {
                 if(book.checkSearchTerm(searchTerm))  resultList.add(book);
             }
@@ -74,7 +85,7 @@ public class LibraryInventory {
             resultList = bookInventory;
         }
 
-        if(seenToggle != null) {
+        if(seenToggle != null) {//filter for read toggle
             for (Book book: resultList) {
                 if(Main.currentUser.ReadBookMap.containsKey(book.title)) {
                     if(seenToggle) resultList2.add(book);
@@ -87,7 +98,7 @@ public class LibraryInventory {
             resultList2 = new ArrayList<>();
         }
 
-        if(borrowedToggle != null) {
+        if(borrowedToggle != null) {//filter for borrowed toggle
             for (Book book: resultList) {
                 if(Main.currentUser.BorrowedBookMap.containsKey(book.title)) {
                     if(borrowedToggle) resultList2.add(book);
@@ -197,6 +208,8 @@ public class LibraryInventory {
         audiobookInventoryFilteredArray = resultList;
         return Util.arrayListToStringifiedObservableList(resultList);
     }
+
+
 
     public Book getSearchResultBookFromIndex(int index){
         return bookInventoryFilteredArray.get(index);

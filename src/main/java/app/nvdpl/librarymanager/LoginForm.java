@@ -1,3 +1,8 @@
+/*
+This class holds the 2 cli forms to login and signup
+For storing the passwords it uses a method in util to convert the
+password to a sha256 hash
+ */
 package app.nvdpl.librarymanager;
 
 import java.util.AbstractMap;
@@ -13,11 +18,11 @@ public class LoginForm extends Accounts{
             System.out.println("Please Enter Username (Type nothing to go back): ");
             username = WaitFor.waitForString();
 
-            if (username.isEmpty()) return null;
+            if (username.isEmpty()) return null;//quit if username empty
 
             System.out.println("Please Enter Password");
-            hashedPassword = Util.sha256(String.valueOf(WaitFor.waitForString()));
-            loginKVPair = new AbstractMap.SimpleImmutableEntry<>(username, hashedPassword);
+            hashedPassword = Util.sha256(String.valueOf(WaitFor.waitForString()));//convert password to hash
+            loginKVPair = new AbstractMap.SimpleImmutableEntry<>(username, hashedPassword);//create new kv pair
 
             if(!Accounts.isValidLogin(loginKVPair)) {
                 System.out.println("An account with this username and password combination does not exist. Please try again.");
@@ -29,7 +34,7 @@ public class LoginForm extends Accounts{
 
         System.out.println("Account logged in successfully");
 
-        Main.currentUser = Accounts.retrieveBookUserFromUsername(loginKVPair.getValue());
+        Main.currentUser = Accounts.retrieveBookUserFromUsername(loginKVPair.getValue());//set current account
         return loginKVPair.getKey();
     }
 

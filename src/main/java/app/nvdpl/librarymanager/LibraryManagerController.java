@@ -1,3 +1,16 @@
+/*
+Controller Class
+
+This class is directly accessed from the Javafx Fxml file
+these functions are run directly from the application itself
+as a result of an event in the app. These functions are mostly
+for updating the user interface, most of the functions rely
+on other classes and functions unfortunately due to the lack
+of javafx's ability to provide paramters to the function since
+the default parameter supplied is the event itself some of these
+functions are repetetive since I could not use paramters
+ */
+
 package app.nvdpl.librarymanager;
 
 import javafx.application.Application;
@@ -9,48 +22,33 @@ import javafx.stage.Stage;
 
 public class LibraryManagerController extends Application {
 
-    public Button mainMenuBookButton;
-    public Button mainMenuMovieButton;
-    public Button mainMenuAudioBookButton;
+    public HBox bookmovieaudiobookHbox;
+    public Button mainMenuBookButton,mainMenuMovieButton,mainMenuAudioBookButton, mainMenuAccountButton;//Main menu buttons
     public VBox accountInfoVbox;
-    public VBox bookSearchVbox;
-    public VBox movieSearchVbox;
-    public VBox audiobookSearchVbox;
-    public VBox bookInfoVbox;
-    public VBox movieInfoVbox;
-    public VBox audiobookInfoVbox;
+    public VBox bookSearchVbox, movieSearchVbox, audiobookSearchVbox;//Boxes for search panels
+    public VBox bookInfoVbox, movieInfoVbox,audiobookInfoVbox;//Boxes for info panels
 
-    public ListView<String> bookSearchResultListView;
-    public ListView<String> audiobookSearchResultListView;
-    public ListView<String> movieSearchResultListView;
-    public ToggleGroup BookSearchReadGroup;
-    public ToggleGroup BookSearchBorrowedGroup;
-    public ToggleGroup MovieSearchWatchedGroup;
-    public ToggleGroup MovieSearchBorrowedGrouop;
-    public ToggleGroup AudiobookListenedGroup;
-    public ToggleGroup AudiobookBorrowedGroup;
-    public TextField movieSearchField;
-    public TextField audioBookSearchFIeld;
+    public ListView<String> bookSearchResultListView,audiobookSearchResultListView,movieSearchResultListView;//Search Result List Views
+    public ToggleGroup BookSearchReadGroup, BookSearchBorrowedGroup,MovieSearchWatchedGroup,MovieSearchBorrowedGrouop,AudiobookListenedGroup, AudiobookBorrowedGroup; //search toggle groups
+    public TextField movieSearchField,audioBookSearchFIeld, bookSearchInputField;//Main Search fields
 
-    public TextField bookSearchInputField;
-    public Label bookTitle;
-    public Label bookAuthor;
-    public Label bookDescription;
+    //Book Info Elements
+    public Label bookTitle,bookAuthor,bookDescription;
     public Button bookWebsiteButton;
     public TextArea bookInfoTextArea;
-    public Label movieTitle;
-    public Label movieActors;
-    public Label moviePlot;
+
+    //Movie Info Elements
+    public Label movieTitle,movieActors, moviePlot;
     public TextArea movieInfoTextArea;
-    public Label audiobookTitle;
-    public Label audiobookAuthor;
-    public Label audiobookDescription;
+
+    //AudioBook Info Elements
+    public Label audiobookTitle,audiobookAuthor,audiobookDescription;
     public TextArea audioBookInfo;
-    public Button mainMenuAccountButton;
+
+    //Account Info Elements
     public Label accountUsername;
-    public TextArea accountInfo1;
-    public TextArea accountInfo2;
-    public HBox bookmovieaudiobookHbox;
+    public TextArea accountInfo1, accountInfo2;
+    public Button bookReadButton,bookBorrowedButton, bookUnreadButton, bookReturnButton, movieWatchedButton,movieBorrowButton,movieUnwatchedButton,MovieReturnButton,audiobookHeardButton,audiobookBorrowButton,audioBookUnheardButton,audioBookReturnButton;
 
 
     @FXML
@@ -58,6 +56,7 @@ public class LibraryManagerController extends Application {
         bookSearchResultListView.getItems().setAll(Main.libraryInventory.getBookObservableList());
         movieSearchResultListView.getItems().setAll(Main.libraryInventory.getMovieObservableList());
         audiobookSearchResultListView.getItems().setAll(Main.libraryInventory.getAudioBookObservableList());
+
 
         changeToBookScreen();
     }
@@ -144,6 +143,23 @@ public class LibraryManagerController extends Application {
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
         String[] content = book.getBookInfo();
 
+        if(Main.currentUser.isBorrowed(book)){
+            bookBorrowedButton.setDisable(true);
+            bookReturnButton.setDisable(false);
+        }else{
+            bookBorrowedButton.setDisable(false);
+            bookReturnButton.setDisable(true);
+        }
+
+        if(Main.currentUser.isRead(book)){
+            bookReadButton.setDisable(true);
+            bookUnreadButton.setDisable(false);
+        }else{
+            bookReadButton.setDisable(false);
+            bookUnreadButton.setDisable(true);
+        }
+
+
         bookTitle.setText(content[0]);
         bookAuthor.setText(content[1]);
         bookDescription.setText(content[2]);
@@ -169,6 +185,22 @@ public class LibraryManagerController extends Application {
         Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
         String[] content = movie.getMovieInfo();
 
+        if(Main.currentUser.isBorrowed(movie)){
+            movieBorrowButton.setDisable(true);
+            MovieReturnButton.setDisable(false);
+        }else{
+            movieBorrowButton.setDisable(false);
+            MovieReturnButton.setDisable(true);
+        }
+
+        if(Main.currentUser.isRead(movie)){
+            movieWatchedButton.setDisable(true);
+            movieUnwatchedButton.setDisable(false);
+        }else{
+            movieWatchedButton.setDisable(false);
+            movieUnwatchedButton.setDisable(true);
+        }
+
         movieTitle.setText(content[0]);
         movieActors.setText(content[1]);
         moviePlot.setText(content[2]);
@@ -182,6 +214,22 @@ public class LibraryManagerController extends Application {
 
         AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
         String[] content = audioBook.getAudiobookInfo();
+
+        if(Main.currentUser.isBorrowed(audioBook)){
+            audiobookBorrowButton.setDisable(true);
+            audioBookReturnButton.setDisable(false);
+        }else{
+            audiobookBorrowButton.setDisable(false);
+            audioBookReturnButton.setDisable(true);
+        }
+
+        if(Main.currentUser.isRead(audioBook)) {
+            audiobookHeardButton.setDisable(true);
+            audioBookUnheardButton.setDisable(false);
+        }else{
+            audiobookHeardButton.setDisable(false);
+            audioBookUnheardButton.setDisable(true);
+        }
 
         audiobookTitle.setText(content[0]);
         audiobookAuthor.setText(content[1]);
@@ -208,6 +256,8 @@ public class LibraryManagerController extends Application {
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
 
         Main.currentUser.borrowItem(book, true);
+
+        updateBookInfoPanel();
     }
 
     public void returnBook(){
@@ -218,6 +268,8 @@ public class LibraryManagerController extends Application {
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
 
         Main.currentUser.borrowItem(book, false);
+
+        updateBookInfoPanel();
     }
 
     public void borrowMovie(){
@@ -228,6 +280,8 @@ public class LibraryManagerController extends Application {
         Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
 
         Main.currentUser.borrowItem(movie, true);
+
+        updateMovieInfoPanel();
     }
 
     public void returnMovie(){
@@ -238,6 +292,8 @@ public class LibraryManagerController extends Application {
         Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
 
         Main.currentUser.borrowItem(movie, false);
+
+        updateMovieInfoPanel();
     }
 
     public void borrowAudioBook(){
@@ -248,6 +304,8 @@ public class LibraryManagerController extends Application {
         AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
 
         Main.currentUser.borrowItem(audioBook, true);
+
+        updateAudioBookInfoPanel();
     }
 
     public void returnAudioBook(){
@@ -258,6 +316,8 @@ public class LibraryManagerController extends Application {
         AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
 
         Main.currentUser.borrowItem(audioBook, false);
+
+        updateAudioBookInfoPanel();
     }
 
     public void readBook(){
@@ -268,6 +328,7 @@ public class LibraryManagerController extends Application {
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
 
         Main.currentUser.markItemAsRead(book, true);
+        updateBookInfoPanel();
     }
 
     public void unreadBook(){
@@ -278,6 +339,7 @@ public class LibraryManagerController extends Application {
         Book book = Main.libraryInventory.getSearchResultBookFromIndex(index);
 
         Main.currentUser.markItemAsRead(book, false);
+        updateBookInfoPanel();
     }
 
 
@@ -289,6 +351,7 @@ public class LibraryManagerController extends Application {
         Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
 
         Main.currentUser.markItemAsRead(movie, true);
+        updateMovieInfoPanel();
     }
 
     public void unreadMovie(){
@@ -299,6 +362,7 @@ public class LibraryManagerController extends Application {
         Movie movie = Main.libraryInventory.getSearchResultMovieFromIndex(index);
 
         Main.currentUser.markItemAsRead(movie, false);
+        updateMovieInfoPanel();
     }
 
     public void readAudioBook(){
@@ -309,6 +373,7 @@ public class LibraryManagerController extends Application {
         AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
 
         Main.currentUser.markItemAsRead(audioBook, true);
+        updateAudioBookInfoPanel();
     }
 
     public void unreadAudioBook(){
@@ -319,6 +384,7 @@ public class LibraryManagerController extends Application {
         AudioBook audioBook = Main.libraryInventory.getSearchResultAudioBookFromIndex(index);
 
         Main.currentUser.markItemAsRead(audioBook, false);
+        updateAudioBookInfoPanel();
     }
 
     public void updateUserScreen(){
@@ -327,6 +393,10 @@ public class LibraryManagerController extends Application {
         accountUsername.setText(content[0]);
         accountInfo1.setText(content[1]);
         accountInfo2.setText(content[2]);
+    }
+
+    public void logOut(){
+        Main.hideWindow();
     }
 
 

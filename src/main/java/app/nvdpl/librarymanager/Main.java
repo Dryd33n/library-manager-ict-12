@@ -1,28 +1,22 @@
 package app.nvdpl.librarymanager;
 
 import javafx.application.Application;
-
-import java.io.Console;
+import javafx.application.Platform;
 
 public class Main extends LibraryManagerApplication{
 
     public static LibraryInventory libraryInventory;
-    public static Console console;
     public static BookUser currentUser;
 
 
 
-    private static volatile boolean isRunning = true;
+    static volatile boolean isRunning = true;
 
 
     public static void main(String[] args) {
-        System.out.println("start");
-        console = System.console();
+        Thread nvdplThread = new Thread(Application::launch);
+        nvdplThread.start();
         libraryInventory = new LibraryInventory();
-
-
-
-
 
         Printer.title();
         Printer.intro();
@@ -33,19 +27,26 @@ public class Main extends LibraryManagerApplication{
         Printer.signupMenu();
         }
 
-
-
-
-
+        Printer.exit();
+        WaitFor.waitForInteraction();
+        Printer.clr();
+        exit();
     }
 
     public static void exit(){
         isRunning = false;
         System.exit(0);
     }
+
+    public static void showWindow() {
+        Platform.runLater(LibraryManagerApplication::showWindow);
+    }
+
+    public static void hideWindow() {
+        Platform.runLater(LibraryManagerApplication::hideWindow);
+    }
     
     public static void launchApp(){
-        Thread nvdplThread = new Thread(Application::launch);
-        nvdplThread.start();
+
     }
 }

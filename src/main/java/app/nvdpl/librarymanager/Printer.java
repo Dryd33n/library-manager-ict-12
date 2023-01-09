@@ -43,10 +43,10 @@ public class Printer {
                     username = LoginForm.login();
                     if (username != null) {
                         Main.currentUser = Accounts.retrieveBookUserFromUsername(username);
-                        Main.launchApp();
+                        Main.showWindow();
                     }
                 }
-                case 3 -> Main.exit();
+                case 3 -> Main.isRunning = false;
                 default -> {
                 }
             }
@@ -67,6 +67,16 @@ public class Printer {
                     |___________________|
                     
                 Enter your input:
+                """);
+    }
+
+    public static void exit() {
+        System.out.println("""
+                    Thank you for using the NVDPL application
+                    
+                Thank-you for using the NVDPL application today we hope your experience
+                was easy and seamless, we are constantly adding new features to our apps
+                and hope to see you back soon. Thank you!
                 """);
     }
 }

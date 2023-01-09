@@ -1,3 +1,10 @@
+/*
+Book Class:
+
+This class is used for the base of the app, for the 3 main types of items in the
+inventory, this class provides functionality for books in the application
+*/
+
 package app.nvdpl.librarymanager;
 
 import org.json.JSONObject;
